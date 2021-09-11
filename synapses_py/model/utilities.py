@@ -11,6 +11,7 @@ T = TypeVar('T')
 def lazy_cons(x: T, xs: Sequence) -> Sequence:
     return seq([x]) + xs
 
+
 # TODO: use reverse and then fold
 def lazy_unzip(ls: Sequence) -> Tuple[Sequence, Sequence]:
     (reversed_xs, reversed_ys) = ls \
@@ -28,12 +29,6 @@ def lazy_split_at(n: int,
                   ls: Sequence
                   ) -> (Sequence, Sequence):
     return ls.take(n), ls.drop(n)
-
-
-def lazy_realization(ls: Sequence) -> Sequence:
-    # this is odd but it gives different results from cached
-    ls.__str__()
-    return ls
 
 
 class EnhancedJSONEncoder(json.JSONEncoder):

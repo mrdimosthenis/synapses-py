@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "synapses-py"
-version = "7.4.1"
+version = "8.0.0"
 description = "A lightweight library for neural networks that runs anywhere"
 
 license = "MIT"

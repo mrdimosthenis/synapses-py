@@ -2,8 +2,8 @@ from functional import seq
 from functional.pipeline import Sequence
 
 from synapses_py.model import utilities
-from synapses_py.model.net_elems.layer import Layer
-from synapses_py.model.net_elems.network import Network
+from synapses_py.model.net_elems.layer import layer
+from synapses_py.model.net_elems.network import network
 
 pixels = 400.0
 
@@ -107,7 +107,7 @@ def hidden_circles_svgs(max_chain_circles: int,
 def layer_circles_svgs(max_chain_circles: int,
                        layer_order: int,
                        num_of_layers: int,
-                       layer_val: Layer) -> Sequence:
+                       layer_val: layer.Layer) -> Sequence:
     is_last_layer = layer_order == num_of_layers - 1
     activations = layer_val \
         .map(lambda neuron_val: neuron_val.activation_f.name)
@@ -199,7 +199,7 @@ def layer_lines_svgs(max_chain_circles: int,
                      layer_order: int,
                      num_of_layers: int,
                      max_abs_weight: float,
-                     layer_val: Layer) -> Sequence:
+                     layer_val: layer.Layer) -> Sequence:
     return layer_val \
         .zip_with_index() \
         .flat_map(lambda t:
@@ -214,7 +214,7 @@ def layer_lines_svgs(max_chain_circles: int,
 
 # TODO do not count layers and neurons inside map and flatmap
 
-def network_svg(network_val: Network) -> str:
+def network_svg(network_val: network.Network) -> str:
     max_chain_circles = \
         network_val \
             .zip_with_index() \
